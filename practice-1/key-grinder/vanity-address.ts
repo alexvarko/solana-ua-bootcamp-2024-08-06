@@ -1,3 +1,4 @@
+import { addKeypairToEnvFile } from "@solana-developers/helpers";
 import { Keypair } from "@solana/web3.js"
 import "dotenv/config"
 
@@ -17,6 +18,8 @@ while (!startsWithBoolean(keypair) || !endsWithBoolean(keypair)) {
   keypair = Keypair.generate()
   counter += 1
 }
+addKeypairToEnvFile(keypair, "SECRET_KEY", ".env")
+
 console.log(
   `Public key starts with ${startsWith}${
     endsWith ? " and ends with " + endsWith : ""
